@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProductTable from "./ProductTable";
 import OrderManagement from "./OrderMenagment";
+import RatingsTable from "./RatingForm";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("");
@@ -125,15 +126,8 @@ const AdminDashboard = () => {
           )}
 
           {activeTab === "rates" && (
-            <div className="bg-transparent rounded p-4 shadow-sm">
-              <div className="text-center py-1">
-                <i
-                  className="bi bi-star-half text-muted mb-3"
-                  style={{ fontSize: "3rem" }}
-                ></i>
-                <h5>Vlerësimet</h5>
-                <p className="text-muted">Vlerësimi do shfaqet këtu.</p>
-              </div>
+            <div className="bg-transparent rounded p-1 shadow-sm">
+             <RatingsTable/>
             </div>
           )}
 
