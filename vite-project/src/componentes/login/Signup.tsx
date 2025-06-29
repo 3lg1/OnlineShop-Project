@@ -8,32 +8,35 @@ interface User {
   email: string;
   password: string;
   role: string;
+  role: string;
 }
-
 const SignUpPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const [users, setUsers] = useState<User[]>([]);
-
   const fetchUsers = async () => {
     try {
+      const res = await axios.get("http://localhost:3000/users");
       const res = await axios.get("http://localhost:3000/users");
       setUsers(res.data);
     } catch (err) {
       console.error("Gabim gjatë marrjes së përdoruesve:", err);
+      console.error("Gabim gjatë marrjes së përdoruesve:", err);
     }
   };
-
   useEffect(() => {
     fetchUsers();
   }, []);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!name || !email || !password) {
+      setMessage("Ju lutem plotësoni të gjitha fushat.");
       setMessage("Ju lutem plotësoni të gjitha fushat.");
       return;
     }
@@ -43,9 +46,14 @@ const SignUpPage = () => {
       )
     ) {
       setMessage("Ky email është regjistruar tashmë.");
+    if (
+      users.find(
+        (u) => u.email && u.email.toLowerCase() === email.toLowerCase()
+      )
+    ) {
+      setMessage("Ky email është regjistruar tashmë.");
       return;
     }
-
     try {
       const res = await axios.post("http://localhost:3000/users", {
         name,
@@ -59,16 +67,22 @@ const SignUpPage = () => {
         setName("");
         setEmail("");
         setPassword("");
+        setMessage("Regjistrimi u krye me sukses!");
+        setName("");
+        setEmail("");
+        setPassword("");
         fetchUsers();
       } else {
+        setMessage("Gabim gjatë regjistrimit.");
         setMessage("Gabim gjatë regjistrimit.");
       }
     } catch (err: any) {
       console.error("Gabim gjatë lidhjes me serverin:", err.message || err);
       setMessage("Gabim gjatë lidhjes me serverin.");
+      console.error("Gabim gjatë lidhjes me serverin:", err.message || err);
+      setMessage("Gabim gjatë lidhjes me serverin.");
     }
   };
-
   return (
     <div
       style={{
@@ -210,7 +224,6 @@ const SignUpPage = () => {
               onBlur={(e) => (e.currentTarget.style.borderColor = "#333")}
             />
           </label>
-
           <button
             type="submit"
             style={{
@@ -263,5 +276,4 @@ const SignUpPage = () => {
     </div>
   );
 };
-
 export default SignUpPage;

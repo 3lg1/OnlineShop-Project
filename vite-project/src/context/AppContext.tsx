@@ -60,7 +60,8 @@ export type ProductData = {
   price: string;
   tags: string[];
   filterTags: string[];
-  rating?: number;
+   ratings?: number;
+   rating: any;
   discount?: string;
   isNew?: boolean;
 };
@@ -146,7 +147,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const updateRating = async (id: string, rating: number) => {
     try {
-      await axios.post("http://localhost:3000/rating", { id, rating });
+      await axios.post("http://localhost:3000/ratings", { id, rating });
       await fetchRatings();
     } catch (err) {
       console.error("Gabim gjatë ruajtjes së ratingut:", err);
