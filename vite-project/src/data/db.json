@@ -34,7 +34,21 @@
       "id": "e916",
       "name": "ari",
       "email": "afro@gmail.com",
-      "password": "999"
+      "password": "999",
+      "role": "user"
+    },
+    {
+      "id": "ad43",
+      "name": "ana",
+      "email": "ana@gmail.com",
+      "password": "555"
+    },
+    {
+      "id": "e3e2",
+      "name": "beni",
+      "email": "beni@gmail.com",
+      "password": "000",
+      "role": "user"
     }
   ],
   "data": [
@@ -360,7 +374,8 @@
     },
     {
       "productId": "p1",
-      "rating": 3
+      "rating": 3,
+      "id": "59c6"
     },
     {
       "id": "p1",
@@ -836,6 +851,14 @@
     },
     {
       "id": "p5",
+      "rating": 1
+    },
+    {
+      "id": "p2",
+      "rating": 1
+    },
+    {
+      "id": "p1",
       "rating": 1
     }
   ]

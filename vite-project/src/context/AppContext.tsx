@@ -12,6 +12,7 @@ type Users = {
   name: string;
   email: string;
   password: string;
+  role: "admin" | "user";
 };
 type Customer = {
   [x: string]: any;
